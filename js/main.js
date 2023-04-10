@@ -2,6 +2,8 @@ const navButton = document.querySelector('.nav__button');
 const navMenu = document.querySelector('.nav__container');
 const tabButttons = document.querySelectorAll('.features__tab');
 
+const clickQuestions = document.querySelectorAll('.article__question');
+
 navButton.addEventListener('click', ()=>{
     
     const navLogo = document.querySelector('.nav__logo');
@@ -55,4 +57,30 @@ tabButttons.forEach(tabButton =>{
 
         }
     })
+});
+
+clickQuestions.forEach(clickQuestion =>{
+    clickQuestion.addEventListener('click', ()=>{
+
+        const arrow = clickQuestion.children[0];
+        arrow.classList.toggle('article__arrow--rotate');
+
+        const anwserContainer = clickQuestion.nextElementSibling;
+        
+        anwserContainer.classList.toggle('article__content--show');
+
+    });
+});
+
+window.addEventListener('resize', ()=>{
+    const isMenuActive = document.querySelector('.nav__container--active');
+
+    if(isMenuActive){
+        const navLogo = document.querySelector('.nav__logo');
+
+        navMenu.classList.remove('nav__container--active');
+        navLogo.setAttribute('src', './images/logo-bookmark.svg');
+        navButton.setAttribute('src', '././images/icon-hamburger.svg');
+        
+    }
 });
